@@ -6,12 +6,29 @@ const { useSlowOpenScreenAnimations } = require('../flags');
 
 const SHOW_DURATION = 230 * 8;
 
+// Navigation.setDefaultOptions(
+//   {
+//       layout: { componentBackgroundColor: "white", backgroundColor: "white", orientation: ["portrait"]},
+//       popGesture: true, 
+//       topBar: { drawBehind: false, backButton: { visible: false, showTitle: false}, buttonColor: "black", hideOnScroll: false, title: { component: { name: "HeaderToolbar", alignment: "center"}}}, 
+//       sideMenu: { openGestureMode: "bezel"}, 
+//       animations: { setStackRoot: { enabled: true}}
+//   };
+// );
+
 const setDefaultOptions = () => Navigation.setDefaultOptions({
   layout: {
     componentBackgroundColor: Colors.background,
     orientation: ['portrait'],
     direction: 'locale'
   },
+  topBar: {
+    drawBehind: false,
+    backButton: { visible: false, showTitle: false},
+    buttonColor: "black",
+    hideOnScroll: false,
+    title: { component: { name: "ToolbarComponent", alignment: "center"}}
+  }, 
   bottomTabs: {
     titleDisplayMode: 'alwaysShow'
   },
