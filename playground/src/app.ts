@@ -19,8 +19,8 @@ alert = (title, message) =>
 
 function start() {
   registerScreens();
-  addOptionsProcessors();
-  setDefaultOptions();
+  // addOptionsProcessors();
+  // setDefaultOptions();
   Navigation.events().registerAppLaunchedListener(async () => {
     Navigation.dismissAllModals();
     setRoot();
@@ -31,39 +31,30 @@ function setRoot() {
   console.log('calling setRoot...');
   Navigation.setRoot({
     root: {
-      sideMenu: {
-        left: {
+      stack: {
+        children: [{
           component: {
-            id: 'left',
-            name: 'SideMenuLeft',
-          }
-        },
-        center: {
-          stack: {
-            children: [{
-              component: {
-                name: Screens.SideMenuCenter,
-              },  
-            }],
-          }
-        },
-      },
-    },
-  }).then(()=>{
-    console.log("overlay shown");
-    return Navigation.showOverlay({
-      component: {
-        name: Screens.Alert,
-        passProps: {
-          title:'test issue 6656',
-          message:'test issue 6656...',
-        },
+            name: 'Layouts',
+            // name: Screens.SideMenuCenter,
+            options: {
+              topBar: {
+                
+                background: {
+                  component: {
+                    name: Screens.ReactTitleView,
+                    // alignment: 'fill',
+                    passProps: {
+                      text: 'CLICK ME (issue 6652)',
+                      clickable: false,
+                    },
+                  },
+                },
+              }
+            }
+          },  
+        }],
       }
-    })
-  })
-  .then(()=>{
-    console.log("overlay shown");
-    Navigation.mergeOptions('left', { sideMenu: {left: { visible: true } } });
+    },
   })
   ;
 }

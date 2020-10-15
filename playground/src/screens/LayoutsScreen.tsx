@@ -18,19 +18,19 @@ const {
 } = testIDs;
 
 export default class LayoutsScreen extends NavigationComponent {
-  static options(): Options {
-    return {
-      topBar: {
-        testID: WELCOME_SCREEN_HEADER,
-        title: {
-          text: 'React Native Navigation',
-        },
-      },
-      layout: {
-        orientation: ['portrait', 'landscape'],
-      },
-    };
-  }
+  // static options(): Options {
+  //   return {
+  //     topBar: {
+  //       testID: WELCOME_SCREEN_HEADER,
+  //       title: {
+  //         text: 'React Native Navigation',
+  //       },
+  //     },
+  //     layout: {
+  //       orientation: ['portrait', 'landscape'],
+  //     },
+  //   };
+  // }
 
   render() {
     return (
