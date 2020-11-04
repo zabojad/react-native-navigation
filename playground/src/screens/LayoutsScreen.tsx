@@ -22,37 +22,44 @@ const {
 } = testIDs;
 
 export default class LayoutsScreen extends NavigationComponent {
-  static options(): Options {
-    return {
-      topBar: {
-        testID: WELCOME_SCREEN_HEADER,
-        title: {
-          text: 'React Native Navigation',
-        },
-      },
-      layout: {
-        orientation: ['portrait', 'landscape'],
-      },
-    };
-  }
+  // static options(): Options {
+  //   return {
+  //     topBar: {
+  //       testID: WELCOME_SCREEN_HEADER,
+  //       title: {
+  //         text: 'React Native Navigation',
+  //       },
+  //     },
+  //     layout: {
+  //       orientation: ['portrait', 'landscape'],
+  //     },
+  //   };
+  // }
 
   render() {
     return (
       <Root componentId={this.props.componentId}>
-        <Button label="Stack" testID={STACK_BTN} onPress={this.stack} />
-        <Button label="BottomTabs" testID={BOTTOM_TABS_BTN} onPress={this.bottomTabs} />
-        <Button label="SideMenu" testID={SIDE_MENU_BTN} onPress={this.sideMenu} />
-        <Button
-          label="SplitView"
-          testID={SPLIT_VIEW_BUTTON}
-          platform="ios"
-          onPress={this.splitView}
-        />
+        <Button label="Show Overlay" testID={STACK_BTN} onPress={this.showOverlay} />
       </Root>
     );
   }
 
-  stack = () => Navigation.showModal(Screens.Stack);
+  showOverlay = () => Navigation.showOverlay(
+   {
+     component: {
+       name: Screens.Overlay,
+       options: {
+         overlay: {
+           interceptTouchOutside: false,
+         },
+         layout: {
+           backgroundColor: 'transparent',
+           componentBackgroundColor: 'transparent',
+         },
+       }
+     }
+    }
+  );
 
   bottomTabs = () =>
     Navigation.showModal({

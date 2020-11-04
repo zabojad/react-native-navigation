@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
 import { NavigationComponentProps } from 'react-native-navigation';
 import Root from '../components/Root';
 import Button from '../components/Button';
@@ -16,34 +17,26 @@ const {
 } = testIDs;
 
 export default class OverlayScreen extends React.Component<NavigationComponentProps> {
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: 'Overlay',
-        },
-      },
-    };
-  }
+  // static options() {
+  //   return {
+  //     topBar: {
+  //       title: {
+  //         text: 'Overlay',
+  //       },
+  //     },
+  //   };
+  // }
 
   render() {
     return (
-      <Root componentId={this.props.componentId}>
-        <Button label="Toast" testID={TOAST_BTN} onPress={this.toast} />
-        <Button label="Alert" testID={ALERT_BUTTON} onPress={() => alert('Alert displayed')} />
-        <Button
-          label="Show overlay"
-          testID={SHOW_OVERLAY_BTN}
-          onPress={() => this.showOverlay(true)}
-        />
-        <Button
-          label="Show touch through overlay"
-          testID={SHOW_TOUCH_THROUGH_OVERLAY_BTN}
-          onPress={() => this.showOverlay(false)}
-        />
-        <Button label="Show overlay with ScrollView" onPress={this.showOverlayWithScrollView} />
-        <Button label="Set Root" testID={SET_ROOT_BTN} onPress={this.setRoot} />
-      </Root>
+      <SafeAreaView style={{flex: 1}}>
+        <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+          <Text style={{textAlign:"center", marginBottom: 20}}>Now try touching the topbar title !</Text>
+          <TouchableOpacity onPress={()=>Navigation.dismissOverlay(this.props.componentId)}>
+            <Text style={{textAlign:"center"}}>Close me</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     );
   }
 
