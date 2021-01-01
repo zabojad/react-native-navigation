@@ -11,6 +11,8 @@ import testIDs from '../testIDs';
 import Screens from './Screens';
 import Navigation from '../services/Navigation';
 import { stack } from '../commons/Layouts';
+// import Alert from './Alert';
+import { Alert } from 'react-native';
 
 const {
   WELCOME_SCREEN_HEADER,
@@ -39,121 +41,27 @@ export default class LayoutsScreen extends NavigationComponent {
   render() {
     return (
       <Root componentId={this.props.componentId}>
-        <Button label="Stack" testID={STACK_BTN} onPress={this.stack} />
-        <Button label="BottomTabs" testID={BOTTOM_TABS_BTN} onPress={this.bottomTabs} />
-        <Button label="SideMenu" testID={SIDE_MENU_BTN} onPress={this.sideMenu} />
-        <Button
-          label="SplitView"
-          testID={SPLIT_VIEW_BUTTON}
-          platform="ios"
-          onPress={this.splitView}
-        />
+        <Button label="dismissAllModals" onPress={this.dismissAllModals} />
+        <Button label="showModal" onPress={this.showModal} />
       </Root>
     );
   }
 
-  stack = () => Navigation.showModal(stack(Screens.Stack, 'StackId'));
+  dismissAllModals = () => Navigation.dismissAllModals().then((_)=>Alert.alert('info','dismissAllModals resolved'));
 
-  bottomTabs = () =>
-    Navigation.showModal({
-      bottomTabs: {
-        children: [
-          stack(Screens.FirstBottomTabsScreen),
-          stack(
-            {
-              component: {
-                name: Screens.SecondBottomTabsScreen,
-              },
-            },
-            'SecondTab'
-          ),
-        ],
-        options: {
-          bottomTabs: {
-            testID: BOTTOM_TABS,
-          },
-        },
+  showModal = () => Navigation.showModal({
+    component: {
+      name: Screens.Alert,
+      passProps: {
+        title: 'This is a modal',
+        message: 'click the button below to dismiss all modals',
       },
-    });
+      options: {
+        modalPresentationStyle: OptionsModalPresentationStyle.overFullScreen
+      }
+    }
+  });
 
-  sideMenu = () =>
-    Navigation.showModal({
-      sideMenu: {
-        left: {
-          component: {
-            id: 'left',
-            name: Screens.SideMenuLeft,
-          },
-        },
-        center: stack({
-          component: {
-            id: 'SideMenuCenter',
-            name: Screens.SideMenuCenter,
-          },
-        }),
-        right: {
-          component: {
-            id: 'right',
-            name: Screens.SideMenuRight,
-          },
-        },
-        options: {
-          layout: {
-            orientation: ['portrait', 'landscape'],
-          },
-          modalPresentationStyle: OptionsModalPresentationStyle.pageSheet,
-        },
-      },
-    });
+  
 
-  splitView = () => {
-    Navigation.setRoot({
-      root: {
-        splitView: {
-          id: 'SPLITVIEW_ID',
-          master: {
-            stack: {
-              id: 'MASTER_ID',
-              children: [
-                {
-                  component: {
-                    name: Screens.CocktailsListMasterScreen,
-                  },
-                },
-              ],
-            },
-          },
-          detail: {
-            stack: {
-              id: 'DETAILS_ID',
-              children: [
-                {
-                  component: {
-                    id: 'DETAILS_COMPONENT_ID',
-                    name: Screens.CocktailDetailsScreen,
-                  },
-                },
-              ],
-            },
-          },
-          options: {
-            layout: {
-              orientation: ['landscape'],
-            },
-            splitView: {
-              displayMode: 'visible',
-            },
-          },
-        },
-      },
-    });
-  };
-
-  onClickSearchBar = () => {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'navigation.playground.SearchControllerScreen',
-      },
-    });
-  };
 }

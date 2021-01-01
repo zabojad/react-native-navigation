@@ -548,7 +548,7 @@
 				ORGANIZATIONNAME = Wix;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = XPHGA2FMQQ;
+						DevelopmentTeam = 7BW78VSQAU;
 						ProvisioningStyle = Automatic;
 					};
 					507C80D92429111F00F765F7 = {
@@ -925,7 +925,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = XPHGA2FMQQ;
+				DEVELOPMENT_TEAM = 7BW78VSQAU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -958,7 +958,7 @@
 					"-ObjC",
 					"-l\"c++\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnn.playground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnn.playground.mine;
 				PRODUCT_NAME = playground;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -973,7 +973,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XPHGA2FMQQ;
+				DEVELOPMENT_TEAM = 7BW78VSQAU;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1006,7 +1006,7 @@
 					"-ObjC",
 					"-l\"c++\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnn.playground;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnn.playground.mine;
 				PRODUCT_NAME = playground;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
